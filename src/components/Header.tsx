@@ -12,12 +12,13 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import Svg, { Path } from "react-native-Svg";
-
+import { useNavigation } from '@react-navigation/native';
 import { ProfileStyles } from "./css/profile";
 
 function Header() {
+  const navigation = useNavigation();
   return (
-    <View style={[ProfileStyles.headers]}>
+    <TouchableOpacity   onPress={() => navigation.goBack()} style={[ProfileStyles.headers]}>
      <View>
      <Svg width={57} height={57} viewBox="0 0 100 115" >
 <Path d="M98.4386 83.2061L0.352034 87.1856L0 25.8163L45.1515 0L99.2348 25.102L98.4386 83.2061Z" fill="#A561FF"/>
@@ -59,7 +60,7 @@ function Header() {
       <View style={{flex:1,justifyContent:"center"}}>
         <Text style={{fontSize:17,fontWeight:"bold"}}>Go back</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 export default Header;

@@ -160,7 +160,7 @@ export const ProfileStyles = StyleSheet.create({
     color: '#323232'
   },
   inputBox: {
-  // width:350,
+  width:310,
     height: 50,
     borderColor: '#CCCCCC',
     borderRadius: 6,
@@ -226,8 +226,8 @@ export const ProfileStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems:"center",
-    marginTop:10,
-    height:"100%"
+    // marginTop:10,
+    height:790,
     
     // textAlign:"center",
 

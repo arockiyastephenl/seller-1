@@ -136,7 +136,9 @@ export default function Login() {
                 </Text>
             </View>
           
-            <View style={{alignItems:"center"}}>
+            <View 
+            // style={{alignItems:"center"}}
+            >
             <TouchableOpacity style={[ProfileStyles.greenButton]}>
                <Text>
                   <Text style={[ProfileStyles.whiteText]}>Sign up</Text>

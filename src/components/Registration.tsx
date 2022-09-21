@@ -16,10 +16,14 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { ProfileStyles } from "./css/profile";
 
+import { RouteStackParamList } from "../RouteStackParams";
+import { StackNavigationProp } from '@react-navigation/stack';
+
 const {width,height} = Dimensions.get('window')
 // type Registration = StackNavigationProp;
+type registration = StackNavigationProp<RouteStackParamList, 'Loginn'>;
 export default function Registration() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<registration>();
     const initialstate = {
         firstname: "",
         lastname: "",
@@ -206,7 +210,7 @@ export default function Registration() {
                     </Text>
                 </Text>
             </View> 
-
+            </View>  
             <View style={styles.container}>
       <View style={styles.section}>
         <Checkbox style={styles.checkbox} value={isChecked} onValueChange={setChecked} />
@@ -226,7 +230,7 @@ export default function Registration() {
         // style={{alignItems:"center"}}
         >
             <TouchableOpacity 
-// onPress={() => navigation.navigate('Registration')}
+     onPress={() => navigation.navigate('Loginn')}
 
        style={[ProfileStyles.greenButton]}>
                <Text>
@@ -234,14 +238,14 @@ export default function Registration() {
                 </Text>
             </TouchableOpacity>
             </View>
-            </View>   
+            
         </View>
       
     );
 }
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+    //   flex: 1,
     //   marginHorizontal: 16,
     //   marginVertical: 32,
      },
@@ -249,6 +253,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       marginBottom:10,
+      width:322,
     },
     paragraph: {
       fontSize: 10,
