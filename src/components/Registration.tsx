@@ -12,6 +12,10 @@ import {
     Keyboard,
     TouchableOpacity,
     KeyboardAvoidingView,
+    SafeAreaView,
+    StatusBar
+   
+  
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { ProfileStyles } from "./css/profile";
@@ -21,16 +25,21 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 const {width,height} = Dimensions.get('window')
 // type Registration = StackNavigationProp;
-type registration = StackNavigationProp<RouteStackParamList, 'Loginn'>;
+type registration = StackNavigationProp<RouteStackParamList, 'Login'>;
 export default function Registration() {
     const navigation = useNavigation<registration>();
     const initialstate = {
         firstname: "",
         lastname: "",
+        email: "",
+        password: "",
        
         phonenumber: "",
-        location: "",
-        email: "",
+        country: "",
+        state:"",
+        city:"",
+        business: "",
+        
 
        
 
@@ -40,10 +49,16 @@ export default function Registration() {
     const errmsg = {
         firstNameErr: "",
         lastNameErr: "",
+        emailErr: "",
+        passwordErr: "",
        
         phonenumberErr: "",
-        locationErr: "",
-        emailErr: "",
+        countryErr: "",
+        stateErr: "",
+        cityErr:"",
+        businessErr:"",
+        
+        
 
 
        
@@ -85,11 +100,11 @@ export default function Registration() {
             setError({ ...error, phonenumberErr: "" });
         }
     }
-    function locationValidate(value: string) {
-        if (form.location === "") {
-            setError({ ...error, locationErr: "*This field can not be empty" });
+    function countryValidate(value: string) {
+        if (form.country === "") {
+            setError({ ...error, countryErr: "*This field can not be empty" });
         } else {
-            setError({ ...error, locationErr: "" });
+            setError({ ...error, countryErr: "" });
         }
     }
 
@@ -101,12 +116,48 @@ export default function Registration() {
         } else {
             setError({ ...error, emailErr: "" });
         }
-    }const [isChecked, setChecked] = useState(false);
+    }
+    function passwordValidate(value: string) {
+        if (form.password === "") {
+            setError({ ...error, passwordErr: "*This field can not be empty" });
+        } else if (!!!form.password.match("[0-9]{10}")) {
+            setError({
+                ...error,
+                passwordErr: "Please provide valid password",
+            });
+        } else {
+            setError({ ...error, passwordErr: "" });
+        }
+    }
+    function cityValidate(value: string) {
+        if (form.city === "") {
+            setError({ ...error, cityErr: "*This field can not be empty" });
+        } else {
+            setError({ ...error, cityErr: "" });
+        }
+    }
+    function stateValidate(value: string) {
+        if (form.state === "") {
+            setError({ ...error, stateErr: "*This field can not be empty" });
+        } else {
+            setError({ ...error, stateErr: "" });
+        }
+    }
+
+    function businessValidate(value: string) {
+        if (form.business === "") {
+            setError({ ...error, businessErr: "*This field can not be empty" });
+        } else {
+            setError({ ...error, businessErr: "" });
+        }
+    }
+    const [isChecked, setChecked] = useState(false);
     const [isChecked2, setChecked2] = useState(false);
 
     return (
-     
-      <View style={ProfileStyles.content}>
+        <SafeAreaView style={styles.safeContainer}>
+        <ScrollView style={styles.scrollView}>
+        <View style={[ProfileStyles.content]}>
           
               
             <View>
@@ -172,6 +223,54 @@ export default function Registration() {
             </View>
 
             <View style={ProfileStyles.headContainer} >
+            <View >
+                    <Text style={ProfileStyles.headText}>Create Password</Text>
+                </View>
+                <TextInput
+                //  onChangeText={(password) => setPassword(password)}
+                    onChangeText={(value) => setForm({ ...form, password: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="Create Password"
+                    secureTextEntry={true}
+
+                    onBlur={() => passwordValidate(form.password)}
+                    value={form.password}
+                    maxLength={10}
+                    keyboardType="number-pad"
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.passwordErr}
+                    </Text>
+                </Text>
+            </View>
+
+            <View style={ProfileStyles.headContainer} >
+            <View >
+                    <Text style={ProfileStyles.headText}>Confirm Password</Text>
+                </View>
+                <TextInput
+                //  onChangeText={(password) => setPassword(password)}
+                    onChangeText={(value) => setForm({ ...form, password: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="Confirm Password"
+                    secureTextEntry={true}
+
+                    onBlur={() => passwordValidate(form.password)}
+                    value={form.password}
+                    maxLength={10}
+                    keyboardType="number-pad"
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.passwordErr}
+                    </Text>
+                </Text>
+            </View>
+
+            <View style={ProfileStyles.headContainer} >
                 <View >
                     <Text style={ProfileStyles.headText}>Phone number</Text>
                 </View>
@@ -192,24 +291,83 @@ export default function Registration() {
                 </Text>
             </View>
 
-           <View style={ProfileStyles.headContainer} >
+            <View style={ProfileStyles.headContainer} >
                 <View >
-                    <Text style={ProfileStyles.headText}>Location</Text>
+                    <Text style={ProfileStyles.headText}>Country</Text>
                 </View>
                 <TextInput
-                    onChangeText={(value) => setForm({ ...form, location: value })}
+                    onChangeText={(value) => setForm({ ...form, country: value })}
                     style={[ProfileStyles.inputBox]}
-                    placeholder="Location"
-                    onBlur={() => locationValidate(form.location)}
-                    value={form.location}
+                    placeholder="Country"
+                    onBlur={() => countryValidate(form.country)}
+                    value={form.country}
                 />
                 <Text>
                     <Text
                         style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
-                        {error.locationErr}
+                        {error.countryErr}
                     </Text>
                 </Text>
             </View> 
+
+          
+           
+            <View style={ProfileStyles.headContainer} >
+                <View >
+                    <Text style={ProfileStyles.headText}>State</Text>
+                </View>
+                <TextInput
+                    onChangeText={(value) => setForm({ ...form, state: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="State"
+                    onBlur={() => stateValidate(form.state)}
+                    value={form.state}
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.stateErr}
+                    </Text>
+                </Text>
+            </View>
+            <View style={ProfileStyles.headContainer} >
+                <View >
+                    <Text style={ProfileStyles.headText}>City</Text>
+                </View>
+                <TextInput
+                    onChangeText={(value) => setForm({ ...form, city: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="City"
+                    onBlur={() => cityValidate(form.city)}
+                    value={form.city}
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.cityErr}
+                    </Text>
+                </Text>
+            </View>
+           
+            <View style={ProfileStyles.headContainer} >
+                <View >
+                    <Text style={ProfileStyles.headText}>Business Site</Text>
+                </View>
+                <TextInput
+                    onChangeText={(value) => setForm({ ...form, business: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="Business site"
+                    onBlur={() => businessValidate(form.business)}
+                    value={form.business}
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.businessErr}
+                    </Text>
+                </Text>
+            </View>
+
             </View>  
             <View style={styles.container}>
       <View style={styles.section}>
@@ -225,25 +383,34 @@ export default function Registration() {
       </View>
      
      
-    </View>
-        <View 
-        // style={{alignItems:"center"}}
-        >
+    
+       
             <TouchableOpacity 
-     onPress={() => navigation.navigate('Loginn')}
+    //  onPress={() => navigation.navigate('Login')}
 
        style={[ProfileStyles.greenButton]}>
                <Text>
-                  <Text style={[ProfileStyles.whiteText]}>Sign up</Text>
+                  <Text style={[ProfileStyles.whiteText]}>Sign Up</Text>
                 </Text>
             </TouchableOpacity>
-            </View>
             
+            </View>
         </View>
+        </ScrollView>
+        </SafeAreaView>
+      
       
     );
 }
 const styles = StyleSheet.create({
+    safeContainer: {
+        flex: 1,
+        // paddingTop: StatusBar.currentHeight,
+      },
+      scrollView: {
+        backgroundColor: 'white',
+        // marginHorizontal: 20,
+      },
     container: {
     //   flex: 1,
     //   marginHorizontal: 16,

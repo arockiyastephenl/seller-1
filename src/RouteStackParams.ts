@@ -1,7 +1,7 @@
 export type RouteStackParamList = {
     HomePage: undefined;
     ProfileHome: undefined;
-    Loginn: undefined;
+    Login: undefined;
     DoctorProfileDetails: undefined;
     ProfileSuccess: undefined;
     AddClinicPage: undefined;

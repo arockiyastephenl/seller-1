@@ -8,12 +8,13 @@ export const ProfileStyles = StyleSheet.create({
 
   headers: {
 
-    backgroundColor:'#2ECC71',
+    backgroundColor:'#F4DAFF',
     height:80,
     display:"flex",
     flexDirection:"row",
 
-    padding:18,
+    padding: 16,
+    paddingRight: 20,
     position:"relative",
   },
   headContainer: {
@@ -50,14 +51,30 @@ export const ProfileStyles = StyleSheet.create({
   greenButton: {
     // width: 150,
     height: 50,
-    backgroundColor: '#2ECC71',
+    backgroundColor: '#8F39FF',
     borderRadius: 6,
     color: '#ffffff',
+    display:"flex",
    justifyContent:"center",
     padding: 15,
     flexDirection: 'row',
    
-    // alignItems: 'center'
+    alignItems: 'center'
+
+  },
+  loginButton: {
+    backgroundColor: '#8F39FF',
+    display:"flex",
+    justifyContent:"center",
+   alignItems:"center",
+    flexDirection: 'row',
+    color: '#ffffff',
+    marginRight:10,
+    padding: 10,
+    width:70,
+    // height:20,
+    borderRadius:24,
+    
 
   },
   whiteText: {
@@ -160,7 +177,7 @@ export const ProfileStyles = StyleSheet.create({
     color: '#323232'
   },
   inputBox: {
-  width:310,
+  width:327,
     height: 50,
     borderColor: '#CCCCCC',
     borderRadius: 6,
@@ -224,10 +241,10 @@ export const ProfileStyles = StyleSheet.create({
     padding: 10,
     // width: "90vw",
     display: "flex",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems:"center",
     // marginTop:10,
-    height:790,
+    // height:790,
     
     // textAlign:"center",
 

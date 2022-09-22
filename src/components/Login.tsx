@@ -7,10 +7,12 @@ import {
     View,
     Text,
     ScrollView,
+    SafeAreaView,
     Image,
     Keyboard,
     TouchableOpacity,
     KeyboardAvoidingView,
+    StatusBar
 } from "react-native";
 
 import { ProfileStyles } from "./css/profile";
@@ -24,7 +26,7 @@ export default function Login() {
     const initialstate = {
         
        
-        phonenumber: "",
+        password: "",
         
         email: "",
 
@@ -36,9 +38,9 @@ export default function Login() {
     const errmsg = {
         
        
-        phonenumberErr: "",
-      
+        // phonenumberErr: "",
         emailErr: "",
+        passwordErr: "",
 
 
        
@@ -56,16 +58,16 @@ export default function Login() {
    
    
   
-    function PhonenumberValidate(value: string) {
-        if (form.phonenumber === "") {
-            setError({ ...error, phonenumberErr: "*This field can not be empty" });
-        } else if (!!!form.phonenumber.match("[0-9]{10}")) {
+    function passwordValidate(value: string) {
+        if (form.password === "") {
+            setError({ ...error, passwordErr: "*This field can not be empty" });
+        } else if (!!!form.password.match("[0-9]{10}")) {
             setError({
                 ...error,
-                phonenumberErr: "Please provide valid password",
+                passwordErr: "Please provide valid password",
             });
         } else {
-            setError({ ...error, phonenumberErr: "" });
+            setError({ ...error, passwordErr: "" });
         }
     }
     
@@ -82,8 +84,10 @@ export default function Login() {
     const [isChecked2, setChecked2] = useState(false);
 
     return (
-     
-      <View style={ProfileStyles.content}>
+        <>
+        <SafeAreaView style={styles.safeContainer}>
+        <ScrollView style={[styles.scrollView]}>
+      <View style={[ProfileStyles.content]}>
           
               
             <View>
@@ -118,34 +122,33 @@ export default function Login() {
                 </View>
                 <TextInput
                 //  onChangeText={(password) => setPassword(password)}
-                    onChangeText={(value) => setForm({ ...form, phonenumber: value })}
+                    onChangeText={(value) => setForm({ ...form, password: value })}
                     style={[ProfileStyles.inputBox]}
                     placeholder="Password"
                     secureTextEntry={true}
 
-                    onBlur={() => PhonenumberValidate(form.phonenumber)}
-                    value={form.phonenumber}
+                    onBlur={() => passwordValidate(form.password)}
+                    value={form.password}
                     maxLength={10}
                     keyboardType="number-pad"
                 />
                 <Text>
                     <Text
                         style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
-                        {error.phonenumberErr}
+                        {error.passwordErr}
                     </Text>
                 </Text>
-            </View>
+            
           
-            <View 
-            // style={{alignItems:"center"}}
-            >
+            
+          
             <TouchableOpacity style={[ProfileStyles.greenButton]}>
                <Text>
-                  <Text style={[ProfileStyles.whiteText]}>Sign up</Text>
+                  <Text style={[ProfileStyles.whiteText]}>Login</Text>
                 </Text>
             </TouchableOpacity>
+           
             </View>
-
          
             <View >
             <View style={{flex:1,flexDirection:"row"}}>
@@ -163,10 +166,29 @@ export default function Login() {
        
             </View>   
         </View>
+      </ScrollView>
+        </SafeAreaView>
+        </>
+        
       
     );
 }
 const styles = StyleSheet.create({
+    safeContainer: {
+        flex: 1,
+        // backgroundColor:"violet",
+        // marginTop: 83,
+        // marginVertical: 32,
+        
+      },
+      scrollView: {
+        backgroundColor: 'white',
+  
+        // height:330,
+        // marginTop:500
+        // marginHorizontal: 20,
+      },
+     
     // container: {
     //   flex: 1,
     // //   marginHorizontal: 16,
