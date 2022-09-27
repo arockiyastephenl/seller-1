@@ -1,28 +1,11 @@
-import React, { useState } from "react";
+import React from 'react';
 
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  Text,
-  ScrollView,
-  Image,
-  Keyboard,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Button,
-} from "react-native";
+import { View, Image } from 'react-native';
 import Svg, { Path } from "react-native-svg";
-import { useNavigation } from '@react-navigation/native';
-import { ProfileStyles } from "./css/profile";
-
-function Header() {
-  const navigation = useNavigation();
+const CareCommerce = () => {
   return (
-    <View   style={[ProfileStyles.headers]}>
-   
-     {/* <View>
-     <Svg width={57} height={57} viewBox="0 0 100 115" >
+    <View style={{ flexDirection: 'row',width:38,marginLeft:13 }}>
+           <Svg width={57} height={57} viewBox="0 0 100 115" >
 <Path d="M98.4386 83.2061L0.352034 87.1856L0 25.8163L45.1515 0L99.2348 25.102L98.4386 83.2061Z" fill="#A561FF"/>
 <Path d="M0 25.8163L45.1515 0L45.2447 60.3403L0.463086 86.9943L0 25.8163Z" fill="#9A4DFF"/>
 <Path opacity="0.36" d="M99.235 25.1021L58.459 54.2025V114.611L98.4388 83.2062L99.235 25.1021Z" fill="#8F39FF"/>
@@ -55,29 +38,8 @@ function Header() {
 <Path d="M16.9636 73.5883C19.4758 73.5883 21.5123 71.5481 21.5123 69.0314C21.5123 66.5147 19.4758 64.4745 16.9636 64.4745C14.4514 64.4745 12.4149 66.5147 12.4149 69.0314C12.4149 71.5481 14.4514 73.5883 16.9636 73.5883Z" fill="white"/>
 <Path d="M13.7831 59.2279C16.2952 59.2279 18.3317 57.1877 18.3317 54.6709C18.3317 52.1542 16.2952 50.114 13.7831 50.114C11.2709 50.114 9.23438 52.1542 9.23438 54.6709C9.23438 57.1877 11.2709 59.2279 13.7831 59.2279Z" fill="white"/>
       </Svg>
-
-    
-     
-      </View> */}
-      <TouchableOpacity  onPress={() => navigation.goBack()} style={{flex:1,justifyContent:"center"}}>
-        <Text style={{fontSize:17,fontWeight:"bold"}}>Go back</Text>
-      </TouchableOpacity>
-      {/* <View>
-     <View style={{flex:1,flexDirection:"row"}}>
-     <TouchableOpacity style={ProfileStyles.loginButton}>
-      <Text style={{fontSize:15,fontWeight:"bold",color:"#ffffff"}}>
-      Home
-      </Text>
-      </TouchableOpacity>
-     <TouchableOpacity style={ProfileStyles.loginButton}>
-      <Text style={{fontSize:15,fontWeight:"bold",color:"#ffffff"}}>
-      Login
-      </Text>
-      </TouchableOpacity>
-      </View>
-      
-      </View> */}
     </View>
   );
-}
-export default Header;
+};
+
+export default CareCommerce;

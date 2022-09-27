@@ -9,12 +9,12 @@ export const ProfileStyles = StyleSheet.create({
   headers: {
 
     backgroundColor:'#F4DAFF',
-    height:80,
+    // height:80,
     display:"flex",
     flexDirection:"row",
 
-    padding: 16,
-    paddingRight: 20,
+    padding: 12,
+    // paddingRight: 20,
     position:"relative",
   },
   headContainer: {
@@ -31,7 +31,12 @@ export const ProfileStyles = StyleSheet.create({
     fontSize: 22,
     marginBottom:18,
   },
-
+  regisTextHead: {
+    fontWeight:"bold",
+    fontSize: 22,
+    marginBottom:18,
+    alignSelf:"center"
+  },
   headText: {
     display:"flex",
     // justifyContent:"center",
@@ -255,7 +260,21 @@ export const ProfileStyles = StyleSheet.create({
     marginTop: 12,
     marginRight:40
   },
+  contentTerms: {
+    backgroundColor: 'white',
+    overflowY: 'scroll',
+    padding: 10,
+    // width: "90vw",
+    display: "flex",
+    // justifyContent: "center",
+    alignItems:"center",
+    // marginTop:10,
+    // height:790,
+    
+    // textAlign:"center",
 
+    
+  },
 
 
 

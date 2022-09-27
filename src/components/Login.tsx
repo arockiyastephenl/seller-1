@@ -16,10 +16,14 @@ import {
 } from "react-native";
 
 import { ProfileStyles } from "./css/profile";
-
+import { RouteStackParamList } from "../RouteStackParams";
+import { StackNavigationProp } from "@react-navigation/stack";
 const {width,height} = Dimensions.get('window')
+import { useNavigation } from "@react-navigation/native";
 
+type login = StackNavigationProp<RouteStackParamList, "ForgetPassword">;
 export default function Login() {
+    const navigation = useNavigation<login>();
 //     const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
  
@@ -142,7 +146,10 @@ export default function Login() {
           
             
           
-            <TouchableOpacity style={[ProfileStyles.greenButton]}>
+            <TouchableOpacity 
+           
+            
+            style={[ProfileStyles.greenButton]}>
                <Text>
                   <Text style={[ProfileStyles.whiteText]}>Login</Text>
                 </Text>
@@ -152,9 +159,13 @@ export default function Login() {
          
             <View >
             <View style={{flex:1,flexDirection:"row"}}>
-<TouchableOpacity>
-      
-        <Text style={ProfileStyles.forgot_button}>Forgot Password?</Text>
+<TouchableOpacity
+ onPress={() => navigation.navigate('ForgetPassword')}
+>
+
+        <Text 
+       
+        style={ProfileStyles.forgot_button}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity>
 

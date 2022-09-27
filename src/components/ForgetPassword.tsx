@@ -1,28 +1,100 @@
 import React, { useState } from "react";
-
+import { Dimensions } from 'react-native';
+import Checkbox from 'expo-checkbox';
 import {
-  StyleSheet,
-  TextInput,
-  View,
-  Text,
-  ScrollView,
-  Image,
-  Keyboard,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Button,
+    StyleSheet,
+    TextInput,
+    View,
+    Text,
+    ScrollView,
+    SafeAreaView,
+    Image,
+    Keyboard,
+    TouchableOpacity,
+    KeyboardAvoidingView,
+    StatusBar
 } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import { useNavigation } from '@react-navigation/native';
-import { ProfileStyles } from "./css/profile";
 
-function Header() {
-  const navigation = useNavigation();
-  return (
-    <View   style={[ProfileStyles.headers]}>
+import { ProfileStyles } from "./css/profile";
+import { RouteStackParamList } from "../RouteStackParams";
+import { StackNavigationProp } from "@react-navigation/stack";
+const {width,height} = Dimensions.get('window')
+import { useNavigation } from "@react-navigation/native";
+import Svg, { Path } from "react-native-svg";
+// type registration = StackNavigationProp<RouteStackParamList, "Login">;
+export default function ForgetPassword() {
+    // const navigation = useNavigation<registration>();
+//     const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+ 
+    const initialstate = {
+        
+       
+        password: "",
+        
+        email: "",
+
+       
+
+       
+
+    };
+    const errmsg = {
+        
+       
+        // phonenumberErr: "",
+        emailErr: "",
+        passwordErr: "",
+
+
+       
+       
+    };
    
-     {/* <View>
-     <Svg width={57} height={57} viewBox="0 0 100 115" >
+    const [form, setForm] = useState(initialstate);
+    const [error, setError] = useState(errmsg);
+
+    console.log("yes", form);
+    const emailverify =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const pattern = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+
+   
+   
+  
+    function passwordValidate(value: string) {
+        if (form.password === "") {
+            setError({ ...error, passwordErr: "*This field can not be empty" });
+        } else if (!!!form.password.match("[0-9]{10}")) {
+            setError({
+                ...error,
+                passwordErr: "Please provide valid password",
+            });
+        } else {
+            setError({ ...error, passwordErr: "" });
+        }
+    }
+    
+
+    function EmailValidate(value: string) {
+        if (form.email === "") {
+            setError({ ...error, emailErr: "*This field can not be empty" });
+        } else if (!!!emailverify.test(form.email)) {
+            setError({ ...error, emailErr: "Invalid Email" });
+        } else {
+            setError({ ...error, emailErr: "" });
+        }
+    }const [isChecked, setChecked] = useState(false);
+    const [isChecked2, setChecked2] = useState(false);
+
+    return (
+        <>
+        <SafeAreaView style={styles.safeContainer}>
+        <ScrollView style={[styles.scrollView]}>
+      <View style={[ProfileStyles.content]}>
+                        
+            <View style={{marginTop:50,marginBottom:13}}>
+            <Svg width={57} height={57} viewBox="0 0 100 115" >
 <Path d="M98.4386 83.2061L0.352034 87.1856L0 25.8163L45.1515 0L99.2348 25.102L98.4386 83.2061Z" fill="#A561FF"/>
 <Path d="M0 25.8163L45.1515 0L45.2447 60.3403L0.463086 86.9943L0 25.8163Z" fill="#9A4DFF"/>
 <Path opacity="0.36" d="M99.235 25.1021L58.459 54.2025V114.611L98.4388 83.2062L99.235 25.1021Z" fill="#8F39FF"/>
@@ -55,29 +127,92 @@ function Header() {
 <Path d="M16.9636 73.5883C19.4758 73.5883 21.5123 71.5481 21.5123 69.0314C21.5123 66.5147 19.4758 64.4745 16.9636 64.4745C14.4514 64.4745 12.4149 66.5147 12.4149 69.0314C12.4149 71.5481 14.4514 73.5883 16.9636 73.5883Z" fill="white"/>
 <Path d="M13.7831 59.2279C16.2952 59.2279 18.3317 57.1877 18.3317 54.6709C18.3317 52.1542 16.2952 50.114 13.7831 50.114C11.2709 50.114 9.23438 52.1542 9.23438 54.6709C9.23438 57.1877 11.2709 59.2279 13.7831 59.2279Z" fill="white"/>
       </Svg>
+                <Text style={[ProfileStyles.regisText,{marginTop:13}]}>Login</Text>
+                </View>  
+           
+           
+           
+         <View >
+            
+            <View style={ProfileStyles.headContainer} >
+            <Text style={[ProfileStyles.regisTextHead]}>
+                Reset your password
+            </Text>
+            <Text style={{fontSize:13,alignSelf:"center",width:313,marginBottom:20}}>
+            Enter the email you use to login to Xero and we'll send you a link to get you back into your account.
 
-    
-     
-      </View> */}
-      <TouchableOpacity  onPress={() => navigation.goBack()} style={{flex:1,justifyContent:"center"}}>
-        <Text style={{fontSize:17,fontWeight:"bold"}}>Go back</Text>
-      </TouchableOpacity>
-      {/* <View>
-     <View style={{flex:1,flexDirection:"row"}}>
-     <TouchableOpacity style={ProfileStyles.loginButton}>
-      <Text style={{fontSize:15,fontWeight:"bold",color:"#ffffff"}}>
-      Home
-      </Text>
-      </TouchableOpacity>
-     <TouchableOpacity style={ProfileStyles.loginButton}>
-      <Text style={{fontSize:15,fontWeight:"bold",color:"#ffffff"}}>
-      Login
-      </Text>
-      </TouchableOpacity>
+            </Text>
+                <View >
+                    <Text style={ProfileStyles.headText}>Email</Text>
+                </View>
+                <TextInput
+                // onChangeText={(email) => setEmail(email)}
+                    onChangeText={(value) => setForm({ ...form, email: value })}
+                    style={[ProfileStyles.inputBox]}
+                    placeholder="Email"
+                    onBlur={() => EmailValidate(form.email)}
+                    value={form.email}
+                />
+                <Text>
+                    <Text
+                        style={{ color: "red", marginLeft: 6, marginBottom: 0, fontSize: 13 }}>
+                        {error.emailErr}
+                    </Text>
+              </Text>
+            </View>
+
+         
+         
+            <View >
+            <View style={{flex:1,flexDirection:"row"}}>
+
+        <TouchableOpacity>
+
+        <Text style={ProfileStyles.forgot_button}>Back to login</Text>
+        </TouchableOpacity>
       </View>
-      
-      </View> */}
+     
     </View>
-  );
+       
+            </View>   
+        </View>
+      </ScrollView>
+        </SafeAreaView>
+        </>
+        
+      
+    );
 }
-export default Header;
+const styles = StyleSheet.create({
+    safeContainer: {
+        flex: 1,
+        // backgroundColor:"violet",
+        // marginTop: 83,
+        // marginVertical: 32,
+        
+      },
+      scrollView: {
+        backgroundColor: 'white',
+  
+        // height:330,
+        // marginTop:500
+        // marginHorizontal: 20,
+      },
+     
+    // container: {
+    //   flex: 1,
+    // //   marginHorizontal: 16,
+    // //   marginVertical: 32,
+    //  },
+    section: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom:10,
+    },
+    paragraph: {
+      fontSize: 15,
+    },
+    checkbox: {
+      margin: 8,
+    },
+  });
