@@ -1,10 +1,18 @@
 
 import { StyleSheet } from 'react-native';
-
+import '@expo/match-media'
+import { useMediaQuery } from "react-responsive";
 
 
 export const ProfileStyles = StyleSheet.create({
-
+  
+  mobileVisible: {
+    display: "flex",
+  
+  },
+  mobileHidden: {
+    display: "none" 
+  },
 
   headers: {
 
@@ -82,6 +90,20 @@ export const ProfileStyles = StyleSheet.create({
     
 
   },
+  loginButtonDash: {
+    // backgroundColor: '#8F39FF',
+    display:"flex",
+    justifyContent:"center",
+   alignItems:"center",
+    flexDirection: 'row',
+    color: 'black',
+    marginRight:10,
+    padding: 10,
+    width:80,
+    // height:20,
+    borderRadius:24,
+
+  },
   whiteText: {
     fontSize: 14,
     lineHeight: 19,
@@ -145,6 +167,7 @@ export const ProfileStyles = StyleSheet.create({
   tabBg: {
     // width: 415,
     backgroundColor: '#F1ECFB',
+    display:"flex"
     // paddingTop: 14,
     // paddingBottom: 14,
     
@@ -205,7 +228,7 @@ export const ProfileStyles = StyleSheet.create({
     fontSize: 19,
 
     borderRadius: 10
-
+    
   },
   saveBtn: {
     backgroundColor: "#702cc7",
@@ -230,13 +253,14 @@ export const ProfileStyles = StyleSheet.create({
   },
   container: {
     display: 'flex',
-    flexDirection: 'column',
-    position: 'relative',
+    flexDirection: 'row',
+    // position: 'relative',
+    justifyContent:"space-between",
     // width: 379,
-    height: 300,
-    // marginBottom:17,
-    backgroundColor: '#f1f1f1',
-    // margin: '100 auto 0'
+    height: 60,
+    zIndex:77
+  
+   
 
 
   },
@@ -275,6 +299,84 @@ export const ProfileStyles = StyleSheet.create({
 
     
   },
+
+  
+  blocTabs: {
+    display: 'flex',
+    flexDirection: "row",
+    marginLeft: 8
+  },
+  tabs: {
+  
+
+    height: 34,
+    
+    borderRadius: 0,
+    textAlign: 'center',
+    justifyContent: 'center',
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingRight: 12,
+    paddingLeft: 12,
+   // marginRight: 10,
+
+
+
+  },
+  touched: {
+    // backgroundColor: "#702cc7",
+    borderBottomWidth:2,
+    borderColor:"white"
+    
+  },
+  nonTouched: {
+    // backgroundColor: "white",
+   
+
+  },
+
+  contentTabs: {
+    flexGrow : 1,
+    backgroundColor:"white",
+ 
+    height:752,
+    margin:0
+  },
+    contentt: {
+    backgroundColor: 'white',
+  
+  
+    
+  },
+
+  activeContent: {
+    display: "flex"
+  },
+  InActiveContent: {
+    display: "none"
+  },
+  tabContainer: {
+    display:'flex',
+    justifyContent:"center"
+  },
+  dashContainer: {
+    backgroundColor:"gainsboro",
+    alignItems:"center",
+    height:1000,
+    width: 385,
+    justifyContent:"center",
+    padding:15
+  },
+  dashCards: {
+    padding:15,
+    backgroundColor:"white",
+    height:236,
+    width:338,
+    // marginRight: isTabletOrMobileDevice ? 20 : 0, 
+    
+    marginBottom:13
+
+  }
 
 
 

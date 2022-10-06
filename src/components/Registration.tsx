@@ -168,60 +168,8 @@ export default function Registration() {
   const [procedures, setSelectedItems] = useState([]);
   const [proceduresData, setProcedureData] = useState([]);
 
-  // console.log("qqq",dropDown.length);
-
-  const newww = [
-    { id: 2, name: "hamesh" },
-    { id: 3, name: "pari" },
-  ];
-
-  console.log("llll", newww);
-
-  //   const stateData = [
-  //     { label: "Andhra Pradesh", value: "Andhra Pradesh" },
-  //     { label: "Tamil Nadu", value: "Tamil Nadu" },
-  //     { label: "Kerala", value: "kerala" },
-  //  {label="Andaman and Nicobar Islands",value="Andaman and Nicobar Islands"},
-  //  {label="Arunachal Pradesh",value="Arunachal Pradesh"},
-  //  {label="Assam",value="Assam"},
-  //  {label="Bihar",value="Bihar"},
-  //  {label="Chandigarh",value="Chandigarh"},
-  //  {label="Chhattisgarh",value="Chhattisgarh"},
-  //  {label="Dadar and Nagar Haveli",value="Dadar and Nagar Haveli"},
-  //  {label="Daman and Diu",value="Daman and Diu"},
-  //  {label="Delhi",value="Delhi"},
-  //  {label="Lakshadweep",value="Lakshadweep"},
-  //  {label="Puducherry",value="Puducherry"},
-  //  {label="Goa",value="Goa"},
-  //  {label="Gujarat",value="Gujarat"},
-  //  {label="Haryana",value="Haryana"},
-  //  {label="Himachal Pradesh"    ,value="Himachal Pradesh"},
-  // { label="Jammu and Kashmir", value="Jammu and Kashmir"},
-  // { label="Jharkhand",value="Jharkhand"},
-  // { label="Karnataka",value="Karnataka"},
-  //  {label="Kerala",value="Kerala"},
-  // { label="Madhya Pradesh",value="Madhya Pradesh"},
-  // { label="Maharashtra",value="Maharashtra"},
-  // { label="Manipur",value="Manipur"},
-  // { label="Meghalaya",value="Meghalaya"},
-  // { label="Mizoram",value="Mizoram"},
-  // { label="Nagaland",value="Nagaland"},
-  // { label="Odisha",value="Odisha"},
-  // { label="Punjab",value="Punjab"},
-  // { label="Rajasthan", value="Rajasthan"},
-  // { label="Sikkim",value="Sikkim"},
-  // { label="Tamil Nadu", value="Tamil Nadu"},
-  // { label="Telangana",value="Telangana"},
-  // { label="Tripura",value="Tripura"},
-  // { label="Uttar Pradesh",value="Uttar Pradesh"},
-  //  {label="Uttarakhand",value="Uttarakhand"},
-  // { label="West Bengal",value="West Bengal"},
-  //   ];
-  //   const cityData = [
-  //     { label: "Trichy", value: "Trichy" },
-  //     { label: "cuddalore", value: "cuddalore" },
-  //     { label: "Madurai", value: "Madurai" },
-  //   ];
+  
+  
 
   const addressFromik = useFormik({
     initialValues: {
@@ -547,6 +495,7 @@ export default function Registration() {
                   handleState(item.value);
                   setCountryName(item.label);
                   setIsFocus(false);
+                  setForm({ ...form, country: item.label })
                 }}
               />
               <Text>
@@ -591,6 +540,7 @@ export default function Registration() {
                   handleCity(country, item.value);
                   setStateName(item.label);
                   setIsFocus(false);
+                  setForm({ ...form, state: item.label })
                 }}
               />
 
@@ -635,27 +585,11 @@ export default function Registration() {
                   setCity(item.value);
                   setCityName(item.label);
                   setIsFocus(false);
+                  setForm({ ...form, city: item.label })
                 }}
               />
 
-              {/* <Dropdown
-       style={[ProfileStyles.inputBox]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={stateData}
-        // search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder="Select city"
-        searchPlaceholder="Search..."
-        // value={value}
-        value={form.city}
-        onBlur={() => countryValidate(form.city)}
-        onChange={(value) => setForm({ ...form, city:  value.value })}
-          /> */}
+            
 
               <Text>
                 <Text
@@ -673,12 +607,12 @@ export default function Registration() {
 
             <View style={ProfileStyles.headContainer}>
               <View>
-                <Text style={ProfileStyles.headText}>Business Site</Text>
+                <Text style={ProfileStyles.headText}>Business website</Text>
               </View>
               <TextInput
                 onChangeText={(value) => setForm({ ...form, business: value })}
                 style={[ProfileStyles.inputBox]}
-                placeholder="Business site"
+                placeholder="Business website"
                 onBlur={() => businessValidate(form.business)}
                 value={form.business}
               />

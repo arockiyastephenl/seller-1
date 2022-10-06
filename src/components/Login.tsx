@@ -148,7 +148,7 @@ export default function Login() {
           
             <TouchableOpacity 
            
-            
+           onPress={() => navigation.navigate('DashboardPage')}
             style={[ProfileStyles.greenButton]}>
                <Text>
                   <Text style={[ProfileStyles.whiteText]}>Login</Text>
@@ -158,7 +158,7 @@ export default function Login() {
             </View>
          
             <View >
-            <View style={{flex:1,flexDirection:"row"}}>
+            <View style={{flex:1,flexDirection:"row",justifyContent:"center"}}>
 <TouchableOpacity
  onPress={() => navigation.navigate('ForgetPassword')}
 >
@@ -167,10 +167,10 @@ export default function Login() {
        
         style={ProfileStyles.forgot_button}>Forgot Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
 
         <Text style={ProfileStyles.forgot_button}>Can't log in ?</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
      
     </View>

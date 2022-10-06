@@ -3,6 +3,10 @@ export type RouteStackParamList = {
     Login: undefined;
     ForgetPassword:undefined;
     TermsPage:undefined;
+    DashboardMain:undefined;
+    DashboardHeader:undefined;
+    DashboardPage:undefined
+    Dashboard:undefined
    
   
 
