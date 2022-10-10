@@ -20,7 +20,7 @@ import { RouteStackParamList } from "../RouteStackParams";
 import { StackNavigationProp } from "@react-navigation/stack";
 const {width,height} = Dimensions.get('window')
 import { useNavigation } from "@react-navigation/native";
-import Svg, { Path } from "react-native-svg";
+// import Svg, { Path } from "react-native-svg";
 type registration = StackNavigationProp<RouteStackParamList, "Login">;
 export default function ForgetPassword() {
     const navigation = useNavigation<registration>();
@@ -82,7 +82,7 @@ export default function ForgetPassword() {
       <View style={[ProfileStyles.content]}>
                         
             <View style={{marginTop:50,marginBottom:13}}>
-            <Svg width={57} height={57} viewBox="0 0 100 115" >
+            {/* <Svg width={57} height={57} viewBox="0 0 100 115" >
 <Path d="M98.4386 83.2061L0.352034 87.1856L0 25.8163L45.1515 0L99.2348 25.102L98.4386 83.2061Z" fill="#A561FF"/>
 <Path d="M0 25.8163L45.1515 0L45.2447 60.3403L0.463086 86.9943L0 25.8163Z" fill="#9A4DFF"/>
 <Path opacity="0.36" d="M99.235 25.1021L58.459 54.2025V114.611L98.4388 83.2062L99.235 25.1021Z" fill="#8F39FF"/>
@@ -114,7 +114,7 @@ export default function ForgetPassword() {
 <Path d="M38.6476 89.937C41.1597 89.937 43.1962 87.8968 43.1962 85.38C43.1962 82.8633 41.1597 80.8231 38.6476 80.8231C36.1354 80.8231 34.0989 82.8633 34.0989 85.38C34.0989 87.8968 36.1354 89.937 38.6476 89.937Z" fill="white"/>
 <Path d="M16.9636 73.5883C19.4758 73.5883 21.5123 71.5481 21.5123 69.0314C21.5123 66.5147 19.4758 64.4745 16.9636 64.4745C14.4514 64.4745 12.4149 66.5147 12.4149 69.0314C12.4149 71.5481 14.4514 73.5883 16.9636 73.5883Z" fill="white"/>
 <Path d="M13.7831 59.2279C16.2952 59.2279 18.3317 57.1877 18.3317 54.6709C18.3317 52.1542 16.2952 50.114 13.7831 50.114C11.2709 50.114 9.23438 52.1542 9.23438 54.6709C9.23438 57.1877 11.2709 59.2279 13.7831 59.2279Z" fill="white"/>
-      </Svg>
+      </Svg> */}
                 <Text style={[ProfileStyles.regisText,{marginTop:13}]}>Login</Text>
                 </View>  
            

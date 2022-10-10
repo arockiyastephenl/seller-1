@@ -20,7 +20,7 @@ import { RouteStackParamList } from "../../RouteStackParams";
 import { StackNavigationProp } from "@react-navigation/stack";
 const {width,height} = Dimensions.get('window')
 import { useNavigation } from "@react-navigation/native";
-import Svg, { Path } from "react-native-svg";
+// import Svg, { Path } from "react-native-svg";
 type dashboardMain = StackNavigationProp<RouteStackParamList, "Login">;
 export default function DashboardMain() {
     const navigation = useNavigation<dashboardMain>();

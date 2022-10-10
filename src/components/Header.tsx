@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView,
   Button,
 } from "react-native";
-import Svg, { Path } from "react-native-svg";
+// import Svg, { Path } from "react-native-svg";
 import { useNavigation } from '@react-navigation/native';
 import { ProfileStyles } from "./css/profile";
 

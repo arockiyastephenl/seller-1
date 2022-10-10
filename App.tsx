@@ -58,14 +58,14 @@ export default function App() {
   
 >
   
-<Stack.Screen name="Registration" component={Registration}/>
+{/* <Stack.Screen name="Registration" component={Registration}/> */}
 <Stack.Screen name="Login"  component={Login}/>
 <Stack.Screen name="ForgetPassword"  component={ForgetPassword}/>
 
 
 
 <Stack.Screen options={{ headerShown: false }} name='DashboardPage' component={DashboardPage}/>
-<Stack.Screen options={{ headerShown: false }} name='Dashboards' component={Dashboard}/>
+{/* <Stack.Screen options={{ headerShown: false }} name='Dashboards' component={Dashboard}/> */}
 <Stack.Screen name="TermsPage"  component={TermsPage}/>
    
 

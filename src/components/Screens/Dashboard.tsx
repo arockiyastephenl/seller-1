@@ -85,7 +85,7 @@ const isTabletOrMobileDevice = useMediaQuery({
                <View style={{marginTop:50}} >
                 <View style={{flex:1,flexDirection:"row",marginBottom:54}}>
                     <View>
-                    <CareCommerce/>
+                    {/* <CareCommerce/> */}
                     </View>
                     <View style={{marginLeft:40}}>
                         <Text style={{fontWeight:"bold",fontSize:16,marginBottom:15}}>
