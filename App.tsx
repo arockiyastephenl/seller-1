@@ -42,7 +42,7 @@ export default function App() {
    ( <>
    <View style={{display:"flex",flexDirection:"row"}}>
    {/* <Header/> */}
-    <CareCommerce/>
+    {/* <CareCommerce/> */}
     </View> 
     </>
     ),
@@ -66,7 +66,7 @@ export default function App() {
 
 <Stack.Screen options={{ headerShown: false }} name='DashboardPage' component={DashboardPage}/>
 <Stack.Screen options={{ headerShown: false }} name='Dashboards' component={Dashboard}/>
-{/* <Stack.Screen name="TermsPage"  component={TermsPage}/> */}
+<Stack.Screen name="TermsPage"  component={TermsPage}/>
    
 
 </Stack.Navigator>

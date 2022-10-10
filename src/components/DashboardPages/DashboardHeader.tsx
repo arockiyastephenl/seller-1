@@ -44,6 +44,7 @@ function DashboardHeader() {
     };
    
     const [open, setOpen] = useState(false);
+    const [open2, setOpen2] = useState(false);
    
   
     return (
@@ -75,7 +76,7 @@ function DashboardHeader() {
        <Entypo name="menu" style={{marginLeft:15}} size={37} color="black" />
        </TouchableOpacity>
       {open ?
-       <View style={{flex:1,backgroundColor:"white",position:"absolute",top:24,width:205,paddingTop:30,flexDirection:"column"}}>
+       <View style={{flex:1,backgroundColor:"white",position:"absolute",top:44,width:205,paddingTop:30,flexDirection:"column"}}>
              <TouchableOpacity
                style={[ProfileStyles.tabs, toggleState === 1 ? ProfileStyles.touched : ProfileStyles.nonTouched]}
                onPress={() => toggleTab(1)}>
@@ -172,13 +173,50 @@ function DashboardHeader() {
            
              <TouchableOpacity
                style={[ProfileStyles.tabs, toggleState === 10 ? ProfileStyles.touched : ProfileStyles.nonTouched]}
-               onPress={() => toggleTab(10)}>
-              <Text style={[{ fontWeight: "bold", zIndex: 2 , color: "black" }]}>
+               onPress={() => setOpen2(current => !current)}>
+
+            <Entypo name="menu" style={{marginLeft:15}} size={37} color="black" />
+              {/* <Text style={[{ fontWeight: "bold", zIndex: 2 , color: "black" }]}>
                  Profile
-               </Text>
+               </Text> */}
     
     
              </TouchableOpacity>
+             {open2 ?
+       <View style={{flex:1,backgroundColor:"white",position:"absolute",top:44,width:205,paddingTop:30,flexDirection:"column"}}>
+             <TouchableOpacity
+               style={[ProfileStyles.tabs, toggleState === 1 ? ProfileStyles.touched : ProfileStyles.nonTouched]}
+               onPress={() => toggleTab(1)}>
+               <View>
+                 <Text style={[{ fontWeight: "bold", zIndex: 2 , color: "black" }]}>
+    
+                   <Text  >
+               Profile
+                   </Text>
+                 </Text>
+               </View>
+    
+             </TouchableOpacity>
+    
+             <TouchableOpacity
+               style={[ProfileStyles.tabs, toggleState === 2 ? ProfileStyles.touched : ProfileStyles.nonTouched]}
+               onPress={() => toggleTab(2)}>
+               <Text style={[{ fontWeight: "bold", zIndex: 2 , color: "black" }]}>
+                Details
+               </Text>
+             </TouchableOpacity>
+    
+           
+
+
+
+
+
+             
+             </View>
+:
+""
+   }
                
              </View>
     
