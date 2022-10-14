@@ -228,7 +228,7 @@ function DashboardHeader() {
            <View style={[ProfileStyles.contentt, toggleState === 1 ? ProfileStyles.activeContent : ProfileStyles.InActiveContent]}>
              <ScrollView>
              
-              <Dashboard/>
+            
 
              
              </ScrollView>
@@ -239,7 +239,7 @@ function DashboardHeader() {
            <View
              style={[ProfileStyles.content, toggleState === 2 ? ProfileStyles.activeContent : ProfileStyles.InActiveContent]}>
              <ScrollView>
-              
+             <Dashboard/>
              </ScrollView>
     
            </View>
@@ -446,14 +446,14 @@ function DashboardHeader() {
      <View style={ProfileStyles.contentTabs}>
 
        <View style={[ProfileStyles.contentt, toggleState === 1 ? ProfileStyles.activeContent : ProfileStyles.InActiveContent]}>
-        <Dashboard/>
+        
        </View>
 
 
        <View
          style={[ProfileStyles.content, toggleState === 2 ? ProfileStyles.activeContent : ProfileStyles.InActiveContent]}>
          <ScrollView>
-          
+         <Dashboard/>
          </ScrollView>
 
        </View>
