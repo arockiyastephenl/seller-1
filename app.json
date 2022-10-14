@@ -2,11 +2,9 @@
   "expo": {
     "name": "seller-app",
     "slug": "seller-app",
-    "version": "1.0.0",
+    "version": "7.0.0",
     "orientation": "portrait",
-    
     "userInterfaceStyle": "light",
-  
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -14,11 +12,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stephenz007.sellerapp"
     },
     "android": {
-     
+      "package": "com.stephenz007.sellerapp",
+      "versionCode": 10
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fb045452-6c2c-47dd-a7d2-2fc1caac854f"
+      }
     }
-   
   }
 }
