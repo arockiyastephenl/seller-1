@@ -7,7 +7,8 @@ export type RouteStackParamList = {
     DashboardHeader:undefined;
     DashboardPage:undefined
     Dashboard:undefined
-   
+    AddNewStore:undefined
+    MultiselectPage:undefined
   
 
     

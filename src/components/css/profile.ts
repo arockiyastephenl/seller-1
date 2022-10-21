@@ -213,6 +213,16 @@ export const ProfileStyles = StyleSheet.create({
     padding: 10,
     marginBottom: 0
   },
+  inputBoxDesk:{
+    width:467,
+    height: 50,
+    borderColor: '#CCCCCC',
+    borderRadius: 6,
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 0
+
+  },
   btn: {
     backgroundColor: "green",
     color: "white",
@@ -257,7 +267,7 @@ export const ProfileStyles = StyleSheet.create({
     // position: 'relative',
     justifyContent:"space-between",
     // width: 379,
-    height: 60,
+    height: 50,
     zIndex:77
   
    
@@ -267,7 +277,7 @@ export const ProfileStyles = StyleSheet.create({
   content: {
     backgroundColor: 'white',
     overflowY: 'scroll',
-    padding: 10,
+    // padding: 10,
     // width: "90vw",
     display: "flex",
     // justifyContent: "center",
@@ -276,8 +286,34 @@ export const ProfileStyles = StyleSheet.create({
     // height:790,
     
     // textAlign:"center",
-
+  
     
+  },
+  dashaligncontent: {
+    backgroundColor: 'white',
+    overflowY: 'scroll',
+    // padding: 10,
+    // width: "90vw",
+    display: "flex",
+    // justifyContent: "center",
+    // alignItems:"center",
+    // marginTop:10,
+    // height:790,
+    
+    // textAlign:"center",
+  
+    
+  },
+  uploadbtn: {
+    backgroundColor: "#702cc7",
+    transitionDuration: 3,
+    padding: 12,
+    width: 131,
+    borderRadius: 6,
+    color:"white",
+    fontWeight:"bold",
+    textAlign:"center"
+
   },
   forgot_button: {
     height: 30,
@@ -339,7 +375,7 @@ export const ProfileStyles = StyleSheet.create({
     flexGrow : 1,
     backgroundColor:"white",
  
-    height:752,
+    
     margin:0
   },
     contentt: {

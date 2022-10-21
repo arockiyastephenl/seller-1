@@ -14,6 +14,7 @@ import Svg, { Path } from "react-native-svg";
 import CareCommerce from './src/components/utils/CareCommerce';
 import DashboardPage from './src/components/DashboardPages/DashboardPage';
 import Dashboard from './src/components/Screens/Dashboard';
+import AddNewStore from './src/components/utils/AddNewStore';
 // import DashboardMain from './src/components/DashboardPages/DashboardMain';
 // import DashboardHeader from './src/components/DashboardPages/DashboardHeader';
 const Stack = createNativeStackNavigator();
@@ -58,14 +59,15 @@ export default function App() {
   
 >
   
-<Stack.Screen name="Registration" component={Registration}/>
+{/* <Stack.Screen name="Registration" component={Registration}/> */}
 <Stack.Screen name="Login"  component={Login}/>
 <Stack.Screen name="ForgetPassword"  component={ForgetPassword}/>
 
 
 
 <Stack.Screen options={{ headerShown: false }} name='DashboardPage' component={DashboardPage}/>
-{/* <Stack.Screen options={{ headerShown: false }} name='Dashboards' component={Dashboard}/> */}
+<Stack.Screen options={{ headerShown: false }} name='Dashboards' component={Dashboard}/>
+<Stack.Screen options={{ headerShown: false }} name='AddNewStore' component={AddNewStore}/>
 <Stack.Screen name="TermsPage"  component={TermsPage}/>
    
 

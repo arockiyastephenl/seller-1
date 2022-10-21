@@ -22,7 +22,7 @@ const {width,height} = Dimensions.get('window')
 import { useNavigation } from "@react-navigation/native";
 import Svg, { Path } from "react-native-svg";
 import CareCommerce from "../utils/CareCommerce";
-
+// import { useMediaQuery } from "react-responsive";
 import '@expo/match-media'
 import { useMediaQuery } from "react-responsive";
 
@@ -57,14 +57,14 @@ const isTabletOrMobileDevice = useMediaQuery({
     const pattern = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
 
    
-   
- 
+
 
     return (
         <>
        <ScrollView >
     
-       <View style={{backgroundColor:"lightblue",height:70,paddingLeft:13,paddingRight:13,flexDirection:"row",alignItems:"center",justifyContent:"space-between",flex:0.4}}>
+       <View style={{backgroundColor:"lightblue",height:70,paddingLeft:13,paddingRight:13,flexDirection:"row",alignItems:"center",
+       justifyContent:isTabletOrMobileDevice ? "space-around": "space-between",flex:0.4}}>
       <View>
         <Text style={{color:"blue",fontWeight:"bold"}}>
             Demo Company

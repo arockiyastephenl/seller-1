@@ -194,6 +194,10 @@ const styles = StyleSheet.create({
       },
       scrollView: {
         backgroundColor: 'white',
+        // marginTop:90
+        // display:"flex",
+        
+        // justifyContent:"center",
   
         // height:330,
         // marginTop:500
