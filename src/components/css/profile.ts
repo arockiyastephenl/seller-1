@@ -320,6 +320,34 @@ export const ProfileStyles = StyleSheet.create({
     marginTop: 12,
     marginRight:40
   },
+  profileUpload: {
+    backgroundColor: "gainsboro",
+    transitionDuration: 3,
+    padding: 12,
+    width: 142,
+    borderRadius:113,
+    height:136,
+    color:"white",
+    fontWeight:"bold",
+    textAlign:"center",
+    alignItems:"center",
+    justifyContent:"center"
+
+  },
+  orderprofileUpload: {
+    backgroundColor: "gainsboro",
+    transitionDuration: 3,
+    padding: 12,
+    width: 142,
+    // borderRadius:113,
+    height:136,
+    color:"white",
+    fontWeight:"bold",
+    textAlign:"center",
+    alignItems:"center",
+    justifyContent:"center"
+
+  },
   contentTerms: {
     backgroundColor: 'white',
     overflowY: 'scroll',
@@ -406,13 +434,156 @@ export const ProfileStyles = StyleSheet.create({
   dashCards: {
     padding:15,
     backgroundColor:"white",
-    height:236,
+    // height:236,
     width:338,
     // marginRight: isTabletOrMobileDevice ? 20 : 0, 
     
     marginBottom:13
 
-  }
+  },
+  storeDetails: {
+    height:44,
+    backgroundColor:"lightblue",
+    padding:10,
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
+  borderRadius:10,
+    
+    marginTop:5,marginBottom:6
+  },
+  ordDetails: {
+   
+    backgroundColor:"lightblue",
+    padding:10,
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
+  borderRadius:10,
+    
+    
+  },
+  paymentDetails: {
+    height:44,
+    backgroundColor:"white",
+    padding:10,
+    display:"flex",
+    flexDirection:"column",
+    justifyContent:"center",
+    alignItems:"center",
+  borderRadius:10,
+    
+    marginTop:5,marginBottom:6
+  },
+  storeNames:{
+    fontWeight:"bold",
+    
+  },
+  storeCard: {
+    backgroundColor:"white",
+    height:700
+  },
+  storeMainCard:{
+    display:'flex',
+    flexDirection:"row",
+    justifyContent:"space-around",
+    backgroundColor: 'lightblue',
+    margin: 4,
+    padding: 8,
+    borderRadius: 8
+
+  },
+  paymentMainCard:{
+    display:'flex',
+    flexDirection:"row",
+    justifyContent:"space-around",
+    backgroundColor: 'white',
+    margin: 4,
+    padding: 8,
+    borderRadius: 8
+
+  },
+  storeMainPic: {
+    display:"flex",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:"white",
+    borderRadius:25,
+    padding: 24,
+    width: 50,
+    height: 49,
+  
+
+  },
+  
+  discardBtn: {
+    padding:12,
+  backgroundColor: "#702cc7",
+    marginRight:7,
+    borderRadius:8,
+    width:100,
+    display:"flex",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    color:"white",
+    fontWeight:"bold",
+    fontSize:21
+
+
+},
+orderDetails:{
+  padding:10,
+  backgroundColor:"gainsboro",
+  width:252,
+  height:100,
+  borderRadius:10,
+  display:"flex",
+  flexDirection:"row",
+  justifyContent:"center",
+  alignItems:"center",
+  marginTop:20,
+  marginBottom:20
+},
+paymentBtn: {
+  padding:12,
+backgroundColor: "#702cc7",
+  marginRight:7,
+  borderRadius:8,
+  // width:100,
+  display:"flex",
+  flexDirection:"row",
+  justifyContent:"center",
+  alignItems:"center",
+  color:"white",
+  fontWeight:"bold",
+  fontSize:21,
+  alignSelf:"flex-end"
+
+
+},
+
+  
+acceptBtn: {
+  padding:12,
+backgroundColor: "white",
+  marginRight:7,
+  borderRadius:8,
+  width:84,
+  display:"flex",
+  flexDirection:"row",
+  justifyContent:"center",
+  alignItems:"center",
+  color:"white",
+  fontWeight:"bold",
+  fontSize:13,
+  borderWidth:2
+
+
+},
 
 
 

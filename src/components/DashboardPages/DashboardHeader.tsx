@@ -29,23 +29,23 @@ import "@expo/match-media";
 import { useMediaQuery } from "react-responsive";
 import Dashboard from "../Screens/Dashboard";
 
-import * as ImagePicker from 'react-native-image-picker'
+import * as ImagePicker from "react-native-image-picker";
 
-import {launchImageLibrary} from 'react-native-image-picker';
+import { launchImageLibrary } from "react-native-image-picker";
 import AddNewStore from "../utils/AddNewStore";
+import EditStore from "../utils/EditStore";
+import EditOrder from "../utils/EditOrder";
 const Tab = createMaterialTopTabNavigator();
 
-const options:any = {
-  title: 'Select Image',
-  type: 'library',
+const options: any = {
+  title: "Select Image",
+  type: "library",
   options: {
-  selectionLimit: 1,
-  mediaType: 'photo',
-  includeBase64: false,
-  
-},
-}
-
+    selectionLimit: 1,
+    mediaType: "photo",
+    includeBase64: false,
+  },
+};
 
 type layout = StackNavigationProp<RouteStackParamList, "Login">;
 
@@ -65,7 +65,7 @@ function DashboardHeader() {
   const closeMenu = () => setVisible(false);
 
   const [toggleState, setToggleState] = useState(2);
-  const [state, setState] = useState({resourcePath:"",});
+  const [state, setState] = useState({ resourcePath: "" });
   const toggleTab = (index: any) => {
     setToggleState(index);
   };
@@ -113,7 +113,7 @@ function DashboardHeader() {
 
   const [form, setForm] = useState(initialstate);
   const [error, setError] = useState(errmsg);
-console.log("imageeeeeeeeee",state)
+  console.log("imageeeeeeeeee", state);
   const emailverify =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const pattern = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
@@ -219,14 +219,75 @@ console.log("imageeeeeeeeee",state)
     }
   }
 
- const openGallery= async()=> {
-  const images = await launchImageLibrary(options);
-  
-
-
- }
-  
-  return (    
+  const openGallery = async () => {
+    const images = await launchImageLibrary(options);
+  };
+  const [storeEdit, setStoreEdit] = useState(false);
+  const [orderEdit, setorderEdit] = useState(false);
+  const storeDetails = [
+    {
+      name: "Saravana Stores",
+      id: 1,
+      location: "Theni",
+    },
+    {
+      name: "Vasan Eye Care",
+      id: 2,
+      location: "chennai",
+    },
+    {
+      name: "Poorvika mobiles",
+      id: 3,
+      location: "Madurai",
+    },
+    {
+      name: "TVS Motors",
+      id: 4,
+      location: "ooty",
+    },
+    {
+      name: "Vasan Eye Care",
+      id: 2,
+      location: "chennai",
+    },
+    {
+      name: "Poorvika mobiles",
+      id: 3,
+      location: "Madurai",
+    },
+    {
+      name: "TVS Motors",
+      id: 4,
+      location: "ooty",
+    },
+  ];
+  const orderDetails = [
+    {
+      name: "Headphone-242 Blue",
+      id: 1,
+      location: "Coimbatore",
+      price: 1277,
+    },
+    {
+      name: "LG’s webOS",
+      id: 2,
+      location: "Karur",
+      price: 34000,
+    },
+    {
+      name: "Micromax IN Note 1",
+      id: 3,
+      location: "Vellore",
+      price: 41000,
+    },
+    {
+      name: "Havells Freddo 70-Litre Cooler",
+      id: 4,
+      location: "Bombay",
+      price: 2300,
+    },
+  ];
+  return (
     <>
       <SafeAreaView>
         {isTabletOrMobileDevice ? (
@@ -259,7 +320,7 @@ console.log("imageeeeeeeeee",state)
               style={{
                 flexDirection: "column",
                 paddingTop: 16,
-                
+
                 backgroundColor: "#F4DAFF",
               }}
             >
@@ -315,14 +376,14 @@ console.log("imageeeeeeeeee",state)
                       ]}
                       onPress={() => toggleTab(2)}
                     >
-                    <View>
-                      <Text
-                        style={[
-                          { fontWeight: "bold", zIndex: 2, color: "black" },
-                        ]}
-                      >
-                        Dashboard
-                      </Text>
+                      <View>
+                        <Text
+                          style={[
+                            { fontWeight: "bold", zIndex: 2, color: "black" },
+                          ]}
+                        >
+                          Dashboard
+                        </Text>
                       </View>
                     </TouchableOpacity>
 
@@ -335,14 +396,14 @@ console.log("imageeeeeeeeee",state)
                       ]}
                       onPress={() => toggleTab(3)}
                     >
-                    <View>
-                      <Text
-                        style={[
-                          { fontWeight: "bold", zIndex: 2, color: "black" },
-                        ]}
-                      >
-                        Stores
-                      </Text>
+                      <View>
+                        <Text
+                          style={[
+                            { fontWeight: "bold", zIndex: 2, color: "black" },
+                          ]}
+                        >
+                          Stores
+                        </Text>
                       </View>
                     </TouchableOpacity>
 
@@ -355,14 +416,14 @@ console.log("imageeeeeeeeee",state)
                       ]}
                       onPress={() => toggleTab(4)}
                     >
-                    <View>
-                      <Text
-                        style={[
-                          { fontWeight: "bold", zIndex: 2, color: "black" },
-                        ]}
-                      >
-                        Location
-                      </Text>
+                      <View>
+                        <Text
+                          style={[
+                            { fontWeight: "bold", zIndex: 2, color: "black" },
+                          ]}
+                        >
+                          Location
+                        </Text>
                       </View>
                     </TouchableOpacity>
 
@@ -375,14 +436,14 @@ console.log("imageeeeeeeeee",state)
                       ]}
                       onPress={() => toggleTab(5)}
                     >
-                    <View>
-                      <Text
-                        style={[
-                          { fontWeight: "bold", zIndex: 2, color: "black" },
-                        ]}
-                      >
-                        Payment
-                      </Text>
+                      <View>
+                        <Text
+                          style={[
+                            { fontWeight: "bold", zIndex: 2, color: "black" },
+                          ]}
+                        >
+                          Payment
+                        </Text>
                       </View>
                     </TouchableOpacity>
 
@@ -395,14 +456,14 @@ console.log("imageeeeeeeeee",state)
                       ]}
                       onPress={() => toggleTab(6)}
                     >
-                     <View>
-                      <Text
-                        style={[
-                          { fontWeight: "bold", zIndex: 2, color: "black" },
-                        ]}
-                      >
-                        Orders
-                      </Text>
+                      <View>
+                        <Text
+                          style={[
+                            { fontWeight: "bold", zIndex: 2, color: "black" },
+                          ]}
+                        >
+                          Orders
+                        </Text>
                       </View>
                     </TouchableOpacity>
 
@@ -511,14 +572,14 @@ console.log("imageeeeeeeeee",state)
                         ]}
                         onPress={() => toggleTab(2)}
                       >
-                       <View>
-                        <Text
-                          style={[
-                            { fontWeight: "bold", zIndex: 2, color: "black" },
-                          ]}
-                        >
-                          Details
-                        </Text>
+                        <View>
+                          <Text
+                            style={[
+                              { fontWeight: "bold", zIndex: 2, color: "black" },
+                            ]}
+                          >
+                            Details
+                          </Text>
                         </View>
                       </TouchableOpacity>
                     </View>
@@ -536,9 +597,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                 
-                </View>
+                ></View>
 
                 <View
                   style={[
@@ -561,7 +620,80 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-               
+                  {storeEdit ? (
+                    <EditStore />
+                  ) : (
+                    <View style={[ProfileStyles.storeCard]}>
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontWeight: "bold",
+                          marginBottom: 10,
+                          marginTop: 6,
+                        }}
+                      >
+                        Store Details
+                      </Text>
+                      <View
+                        style={{
+                          marginTop: 20,
+                          flex: 1,
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <View style={{ marginRight: 8 }}>
+                          {storeDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View style={[ProfileStyles.storeMainPic]}>
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.location}
+                                    </Text>
+                                  </View>
+                                  <TouchableOpacity
+                                    onPress={() => setStoreEdit(true)}
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      { width: 60 },
+                                    ]}
+                                  >
+                                    <View>
+                                      <Text style={[ProfileStyles.storeNames]}>
+                                        Edit
+                                      </Text>
+                                    </View>
+                                  </TouchableOpacity>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                      </View>
+                    </View>
+                  )}
                 </View>
 
                 <View
@@ -571,9 +703,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                 
-                </View>
+                ></View>
 
                 <View
                   style={[
@@ -583,7 +713,152 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-                
+                  <View style={[ProfileStyles.storeCard]}>
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        marginBottom: 10,
+                        marginTop: 6,
+                      }}
+                    >
+                      Payment
+                    </Text>
+
+                    <TouchableOpacity style={[ProfileStyles.paymentBtn]}>
+                      <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                        Payment Details
+                      </Text>
+                    </TouchableOpacity>
+
+                    <View
+                      style={{
+                        marginTop: 20,
+                        flex: 1,
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <View style={{ marginRight: 8 }}>
+                        <Text
+                          style={{
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            marginBottom: 10,
+                            marginTop: 6,
+                          }}
+                        >
+                          Pending Payments
+                        </Text>
+                        {orderDetails.map((items, i) => (
+                          <li>
+                            <View style={[ProfileStyles.paymentMainCard]}>
+                              <View
+                                style={{
+                                  flex: 1,
+                                  flexDirection: "row",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <View
+                                  style={[
+                                    ProfileStyles.storeMainPic,
+                                    {
+                                      borderRadius: 0,
+                                      backgroundColor: "none",
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                                <View
+                                  style={[
+                                    ProfileStyles.paymentDetails,
+                                    {
+                                      width: 234,
+                                      marginLeft: 6,
+                                      marginRight: 6,
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.name}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    Ordered from :{items.location}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </li>
+                        ))}
+                      </View>
+                      <View style={{ marginRight: 8 }}>
+                        <Text
+                          style={{
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            marginBottom: 10,
+                            marginTop: 6,
+                          }}
+                        >
+                          Received Payments
+                        </Text>
+                        {orderDetails.map((items, i) => (
+                          <li>
+                            <View style={[ProfileStyles.paymentMainCard]}>
+                              <View
+                                style={{
+                                  flex: 1,
+                                  flexDirection: "row",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <View
+                                  style={[
+                                    ProfileStyles.storeMainPic,
+                                    {
+                                      borderRadius: 0,
+                                      backgroundColor: "none",
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                                <View
+                                  style={[
+                                    ProfileStyles.paymentDetails,
+                                    {
+                                      width: 234,
+                                      marginLeft: 6,
+                                      marginRight: 6,
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.name}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    Ordered from :{items.location}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </li>
+                        ))}
+                      </View>
+                    </View>
+                  </View>
                 </View>
 
                 <View
@@ -594,7 +869,200 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-               
+                  {orderEdit ? (
+                    <EditOrder />
+                  ) : (
+                    <View style={[ProfileStyles.storeCard]}>
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontWeight: "bold",
+                          marginBottom: 10,
+                          marginTop: 6,
+                        }}
+                      >
+                        Order Details
+                      </Text>
+                      <View
+                        style={{
+                          marginTop: 20,
+                          flex: 1,
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <View style={{ marginRight: 8 }}>
+                          <Text
+                            style={{
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              marginBottom: 10,
+                              marginTop: 6,
+                            }}
+                          >
+                            New Order
+                          </Text>
+                          {orderDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeMainPic,
+                                      { borderRadius: 0 },
+                                    ]}
+                                  >
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      Ordered from :{items.location}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.price}
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          View
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                      onPress={() => setorderEdit(true)}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          Update Status
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                        <View style={{ marginRight: 8 }}>
+                          <Text
+                            style={{
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              marginBottom: 10,
+                              marginTop: 6,
+                            }}
+                          >
+                            Completed Order
+                          </Text>
+                          {orderDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeMainPic,
+                                      { borderRadius: 0 },
+                                    ]}
+                                  >
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      Ordered from :{items.location}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.price}
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          View
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // ,{width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          Update Status
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                      </View>
+                    </View>
+                  )}
                 </View>
                 <View
                   style={[
@@ -606,12 +1074,11 @@ console.log("imageeeeeeeeee",state)
                     { backgroundColor: "gainsboro" },
                   ]}
                 >
-                    <SafeAreaView style={styles.safeContainer}>
-                  <AddNewStore/>
+                  <SafeAreaView style={styles.safeContainer}>
+                    <AddNewStore />
                   </SafeAreaView>
-                         
-                          </View> 
-                       
+                </View>
+
                 <View
                   style={[
                     ProfileStyles.content,
@@ -619,9 +1086,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                
-                </View>
+                ></View>
                 <View
                   style={[
                     ProfileStyles.content,
@@ -629,9 +1094,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                
-                </View>
+                ></View>
                 <View
                   style={[
                     ProfileStyles.content,
@@ -639,9 +1102,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                 
-                </View>
+                ></View>
               </View>
             </View>
           </View>
@@ -664,11 +1125,9 @@ console.log("imageeeeeeeeee",state)
                 }}
               >
                 <View>
-                
-                    <Text style={{ color: "white", fontWeight: "bold" }}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
                     Start trail
-                    </Text>
-                    
+                  </Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -694,14 +1153,12 @@ console.log("imageeeeeeeeee",state)
                     onPress={() => toggleTab(1)}
                   >
                     <View>
-                   
                       <Text
                         style={[
                           { fontWeight: "bold", zIndex: 2, color: "black" },
                         ]}
                       >
                         <Text>Store Selection</Text>
-                     
                       </Text>
                     </View>
                   </TouchableOpacity>
@@ -715,15 +1172,14 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(2)}
                   >
-                  <View>
-                    <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Dashboard
-                      
-                       </Text>
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Dashboard
+                      </Text>
                     </View>
                   </TouchableOpacity>
 
@@ -736,14 +1192,14 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(3)}
                   >
-                   <View>
-                    <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Stores
-                       </Text>
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Stores
+                      </Text>
                     </View>
                   </TouchableOpacity>
 
@@ -756,14 +1212,13 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(4)}
                   >
-                  <View>
-
-                    <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Location
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Location
                       </Text>
                     </View>
                   </TouchableOpacity>
@@ -777,13 +1232,13 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(5)}
                   >
-                   <View>
-                    <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Payment
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Payment
                       </Text>
                     </View>
                   </TouchableOpacity>
@@ -797,13 +1252,13 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(6)}
                   >
-                   <View>
-                     <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Orders
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Orders
                       </Text>
                     </View>
                   </TouchableOpacity>
@@ -859,13 +1314,13 @@ console.log("imageeeeeeeeee",state)
                     ]}
                     onPress={() => toggleTab(10)}
                   >
-                   <View>
-                    <Text
-                      style={[
-                        { fontWeight: "bold", zIndex: 2, color: "black" },
-                      ]}
-                    >
-                      Profile
+                    <View>
+                      <Text
+                        style={[
+                          { fontWeight: "bold", zIndex: 2, color: "black" },
+                        ]}
+                      >
+                        Profile
                       </Text>
                     </View>
                   </TouchableOpacity>
@@ -903,7 +1358,80 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-                
+                  {storeEdit ? (
+                    <EditStore />
+                  ) : (
+                    <View style={[ProfileStyles.storeCard]}>
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontWeight: "bold",
+                          marginBottom: 10,
+                          marginTop: 6,
+                        }}
+                      >
+                        Store Details
+                      </Text>
+                      <View
+                        style={{
+                          marginTop: 20,
+                          flex: 1,
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <View style={{ marginRight: 8 }}>
+                          {storeDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View style={[ProfileStyles.storeMainPic]}>
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.location}
+                                    </Text>
+                                  </View>
+                                  <TouchableOpacity
+                                    onPress={() => setStoreEdit(true)}
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      { width: 60 },
+                                    ]}
+                                  >
+                                    <View>
+                                      <Text style={[ProfileStyles.storeNames]}>
+                                        Edit
+                                      </Text>
+                                    </View>
+                                  </TouchableOpacity>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                      </View>
+                    </View>
+                  )}
                 </View>
 
                 <View
@@ -913,9 +1441,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                 
-                </View>
+                ></View>
 
                 <View
                   style={[
@@ -925,7 +1451,150 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-                
+                  <View style={[ProfileStyles.storeCard]}>
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        marginBottom: 10,
+                        marginTop: 6,
+                      }}
+                    >
+                      Payment
+                    </Text>
+                    <TouchableOpacity style={[ProfileStyles.paymentBtn]}>
+                      <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                        Payment Details
+                      </Text>
+                    </TouchableOpacity>
+                    <View
+                      style={{
+                        marginTop: 20,
+                        flex: 1,
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <View style={{ marginRight: 8 }}>
+                        <Text
+                          style={{
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            marginBottom: 10,
+                            marginTop: 6,
+                          }}
+                        >
+                          Pending Payments
+                        </Text>
+                        {orderDetails.map((items, i) => (
+                          <li>
+                            <View style={[ProfileStyles.paymentMainCard]}>
+                              <View
+                                style={{
+                                  flex: 1,
+                                  flexDirection: "row",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <View
+                                  style={[
+                                    ProfileStyles.storeMainPic,
+                                    {
+                                      borderRadius: 0,
+                                      backgroundColor: "none",
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                                <View
+                                  style={[
+                                    ProfileStyles.paymentDetails,
+                                    {
+                                      width: 234,
+                                      marginLeft: 6,
+                                      marginRight: 6,
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.name}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    Ordered from :{items.location}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </li>
+                        ))}
+                      </View>
+                      <View style={{ marginRight: 8 }}>
+                        <Text
+                          style={{
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            marginBottom: 10,
+                            marginTop: 6,
+                          }}
+                        >
+                          Received Payments
+                        </Text>
+                        {orderDetails.map((items, i) => (
+                          <li>
+                            <View style={[ProfileStyles.paymentMainCard]}>
+                              <View
+                                style={{
+                                  flex: 1,
+                                  flexDirection: "row",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <View
+                                  style={[
+                                    ProfileStyles.storeMainPic,
+                                    {
+                                      borderRadius: 0,
+                                      backgroundColor: "none",
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                                <View
+                                  style={[
+                                    ProfileStyles.paymentDetails,
+                                    {
+                                      width: 234,
+                                      marginLeft: 6,
+                                      marginRight: 6,
+                                    },
+                                  ]}
+                                >
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.name}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    Ordered from :{items.location}
+                                  </Text>
+                                  <Text style={[ProfileStyles.storeNames]}>
+                                    {items.price}
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </li>
+                        ))}
+                      </View>
+                    </View>
+                  </View>
                 </View>
 
                 <View
@@ -936,7 +1605,200 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-                
+                  {orderEdit ? (
+                    <EditOrder />
+                  ) : (
+                    <View style={[ProfileStyles.storeCard]}>
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontWeight: "bold",
+                          marginBottom: 10,
+                          marginTop: 6,
+                        }}
+                      >
+                        Order Details
+                      </Text>
+                      <View
+                        style={{
+                          marginTop: 20,
+                          flex: 1,
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <View style={{ marginRight: 8 }}>
+                          <Text
+                            style={{
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              marginBottom: 10,
+                              marginTop: 6,
+                            }}
+                          >
+                            New Order
+                          </Text>
+                          {orderDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeMainPic,
+                                      { borderRadius: 0 },
+                                    ]}
+                                  >
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      Ordered from :{items.location}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.price}
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          View
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                      onPress={() => setorderEdit(true)}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          Update Status
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                        <View style={{ marginRight: 8 }}>
+                          <Text
+                            style={{
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              marginBottom: 10,
+                              marginTop: 6,
+                            }}
+                          >
+                            Completed Order
+                          </Text>
+                          {orderDetails.map((items, i) => (
+                            <li>
+                              <View style={[ProfileStyles.storeMainCard]}>
+                                <View
+                                  style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeMainPic,
+                                      { borderRadius: 0 },
+                                    ]}
+                                  >
+                                    <Text>Pro</Text>
+                                  </View>
+                                  <View
+                                    style={[
+                                      ProfileStyles.storeDetails,
+                                      {
+                                        width: 234,
+                                        marginLeft: 6,
+                                        marginRight: 6,
+                                      },
+                                    ]}
+                                  >
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.name}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      Ordered from :{items.location}
+                                    </Text>
+                                    <Text style={[ProfileStyles.storeNames]}>
+                                      {items.price}
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // {width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          View
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      style={[
+                                        ProfileStyles.ordDetails,
+                                        // ,{width:60}
+                                      ]}
+                                    >
+                                      <View>
+                                        <Text
+                                          style={[ProfileStyles.storeNames]}
+                                        >
+                                          Update Status
+                                        </Text>
+                                      </View>
+                                    </TouchableOpacity>
+                                  </View>
+                                </View>
+                              </View>
+                            </li>
+                          ))}
+                        </View>
+                      </View>
+                    </View>
+                  )}
                 </View>
                 <View
                   style={[
@@ -946,9 +1808,8 @@ console.log("imageeeeeeeeee",state)
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
-                 
                   <SafeAreaView style={styles.safeContainer}>
-                  <AddNewStore/>
+                    <AddNewStore />
                   </SafeAreaView>
                 </View>
                 <View
@@ -958,9 +1819,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                
-                </View>
+                ></View>
                 <View
                   style={[
                     ProfileStyles.content,
@@ -968,9 +1827,7 @@ console.log("imageeeeeeeeee",state)
                       ? ProfileStyles.activeContent
                       : ProfileStyles.InActiveContent,
                   ]}
-                >
-                  
-                </View>
+                ></View>
                 <View
                   style={[
                     ProfileStyles.content,
@@ -980,18 +1837,18 @@ console.log("imageeeeeeeeee",state)
                   ]}
                 >
                   <ScrollView>
-                   <View>
-                       <Text
-                          style={{
-                        color: "blue",
-                        marginTop: 10,
-                        paddingTop: 10,
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
-                         >
+                    <View>
+                      <Text
+                        style={{
+                          color: "blue",
+                          marginTop: 10,
+                          paddingTop: 10,
+                          fontSize: 20,
+                          textAlign: "center",
+                        }}
+                      >
                         dd
-                    </Text>
+                      </Text>
                     </View>
                   </ScrollView>
                 </View>
@@ -1013,7 +1870,7 @@ const styles = StyleSheet.create({
     shadowRadius: 21,
     width: 511,
     // height:1411,
-    marginTop:10
+    marginTop: 10,
     // flex: 1,
     // paddingTop: StatusBar.currentHeight,
   },

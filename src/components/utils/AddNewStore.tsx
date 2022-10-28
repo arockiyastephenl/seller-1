@@ -192,6 +192,12 @@ export default function AddNewStore() {
 
     const [selectedTeam, setSelectedTeam] = useState({})
     const [selectedTeams, setSelectedTeams] = useState([])
+
+    const [storeLocation, setStoreLocation] = useState({})
+    const [storeLoc,setStoreLoc] = useState([])
+
+    const [servLoc,setServLoc] = useState([])
+
 const K_OPTIONS = [
     {
       item: 'Grocery',
@@ -250,7 +256,35 @@ const K_OPTIONS = [
   
    
   ]
- 
+  const serv_Location_OPTIONS= [
+    {
+      item: 'Trichy',
+      id: 'GROC',
+    },
+    {
+      item: 'Vellore',
+      id: ' MO',
+    },
+    {
+      item: 'Kolkata',
+      id: 'ML',
+    },
+    {
+      item: 'Karnataka',
+      id: 'HDT',
+    },
+    {
+      item: 'Shimla',
+      id: 'CHO',
+    },
+    {
+      item: 'Watches',
+      id: 'WAT',
+    },
+   
+  
+   
+  ]
 
     return (
         <>
@@ -469,9 +503,9 @@ const K_OPTIONS = [
                               style={[ProfileStyles.inputBox]}
                               placeholder="Store Category"
                                   options={store_Location_OPTIONS}
-                               selectedValues={selectedTeams}
-                               onMultiSelect={onMultiChange()}
-                               onTapClose={onMultiChange()}
+                               selectedValues={storeLoc}
+                               onMultiSelect={onMultiChangeStore()}
+                               onTapClose={onMultiChangeStore()}
                               isMulti
       />
                             {/* <TextInput
@@ -594,7 +628,16 @@ const K_OPTIONS = [
                                 Serving Location
                               </Text>
                             </View>
-                            <TextInput
+                            <SelectBox
+                              style={[ProfileStyles.inputBox]}
+                              placeholder="Store Category"
+                                  options={serv_Location_OPTIONS}
+                               selectedValues={servLoc}
+                               onMultiSelect={onMultiChangeServ()}
+                               onTapClose={onMultiChangeServ()}
+                              isMulti
+      />
+                            {/* <TextInput
                               onChangeText={(value) =>
                                 setForm({ ...form, servinglocation: value })
                               }
@@ -604,7 +647,7 @@ const K_OPTIONS = [
                                 ServLocationValidate(form.servinglocation)
                               }
                               value={form.servinglocation}
-                            />
+                            /> */}
                             <Text>
                               <Text
                                 style={{
@@ -925,9 +968,9 @@ const K_OPTIONS = [
                               style={[ProfileStyles.inputBox]}
                               placeholder="Store Category"
                                   options={store_Location_OPTIONS}
-                               selectedValues={selectedTeams}
-                               onMultiSelect={onMultiChange()}
-                               onTapClose={onMultiChange()}
+                               selectedValues={storeLoc}
+                               onMultiSelect={onMultiChangeStore()}
+                               onTapClose={onMultiChangeStore()}
                               isMulti
       />
                             {/* <TextInput
@@ -1052,7 +1095,16 @@ const K_OPTIONS = [
                                 Serving Location
                               </Text>
                             </View>
-                            <TextInput
+                            <SelectBox
+                              style={[ProfileStyles.inputBox]}
+                              placeholder="Store Category"
+                                  options={serv_Location_OPTIONS}
+                               selectedValues={servLoc}
+                               onMultiSelect={onMultiChangeServ()}
+                               onTapClose={onMultiChangeServ()}
+                              isMulti
+      />
+                            {/* <TextInput
                               onChangeText={(value) =>
                                 setForm({ ...form, servinglocation: value })
                               }
@@ -1062,7 +1114,7 @@ const K_OPTIONS = [
                                 ServLocationValidate(form.servinglocation)
                               }
                               value={form.servinglocation}
-                            />
+                            /> */}
                             <View>
                               <Text
                                 style={{
@@ -1213,7 +1265,15 @@ const K_OPTIONS = [
     function onMultiChange() {
         return (item:any) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'))
       }
+      function onMultiChangeStore() {
+        return (item:any) => setStoreLoc(xorBy(storeLoc, [item], 'id'))
+      }
+      function onMultiChangeServ() {
+        return (item:any) => setServLoc(xorBy(servLoc, [item], 'id'))
+      }
     
+    
+
       function onChange() {
         return (val:any) => setSelectedTeam(val)
       }
