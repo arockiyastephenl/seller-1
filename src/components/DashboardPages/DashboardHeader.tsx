@@ -35,6 +35,7 @@ import { launchImageLibrary } from "react-native-image-picker";
 import AddNewStore from "../utils/AddNewStore";
 import EditStore from "../utils/EditStore";
 import EditOrder from "../utils/EditOrder";
+import EditPayment from "../utils/EditPayment";
 const Tab = createMaterialTopTabNavigator();
 
 const options: any = {
@@ -223,6 +224,7 @@ function DashboardHeader() {
     const images = await launchImageLibrary(options);
   };
   const [storeEdit, setStoreEdit] = useState(false);
+  const [storePayment, setstorePayment] = useState(false);
   const [orderEdit, setorderEdit] = useState(false);
   const storeDetails = [
     {
@@ -326,7 +328,7 @@ function DashboardHeader() {
             >
               <View style={[ProfileStyles.container]}>
                 <TouchableOpacity
-                  onPress={() => setOpen((current) => !current)}
+                  onPress={() => setOpen(true)}
                 >
                   <Entypo
                     name="menu"
@@ -354,7 +356,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(1)}
+                      onPress={() => {toggleTab(1); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -374,7 +376,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(2)}
+                      onPress={() => {toggleTab(2); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -394,7 +396,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(3)}
+                      onPress={() => {toggleTab(3); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -414,7 +416,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(4)}
+                      onPress={() => {toggleTab(4); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -434,7 +436,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(5)}
+                      onPress={() => {toggleTab(5); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -454,7 +456,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(6)}
+                      onPress={() => {toggleTab(6); setOpen(false)}}
                     >
                       <View>
                         <Text
@@ -474,7 +476,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(7)}
+                      onPress={() => {toggleTab(7); setOpen(false)}}
                     >
                       <AntDesign name="plus" size={24} color="black" />
                     </TouchableOpacity>
@@ -486,7 +488,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(8)}
+                      onPress={() => {toggleTab(8); setOpen(false)}}
                     >
                       <AntDesign name="search1" size={24} color="black" />
                     </TouchableOpacity>
@@ -497,7 +499,7 @@ function DashboardHeader() {
                           ? ProfileStyles.touched
                           : ProfileStyles.nonTouched,
                       ]}
-                      onPress={() => toggleTab(9)}
+                      onPress={() => {toggleTab(9); setOpen(false)}}
                     >
                       <Ionicons name="notifications" size={24} color="black" />
                     </TouchableOpacity>
@@ -519,7 +521,7 @@ function DashboardHeader() {
                         ? ProfileStyles.touched
                         : ProfileStyles.nonTouched,
                     ]}
-                    onPress={() => setOpen2((current) => !current)}
+                    onPress={() => setOpen2(true)}
                   >
                     <Entypo
                       name="menu"
@@ -550,7 +552,7 @@ function DashboardHeader() {
                             ? ProfileStyles.touched
                             : ProfileStyles.nonTouched,
                         ]}
-                        onPress={() => toggleTab(1)}
+                        onPress={() => {toggleTab(1); setOpen2(false)}}
                       >
                         <View>
                           <Text
@@ -570,7 +572,7 @@ function DashboardHeader() {
                             ? ProfileStyles.touched
                             : ProfileStyles.nonTouched,
                         ]}
-                        onPress={() => toggleTab(2)}
+                        onPress={() => {toggleTab(1); setOpen2(false)}}
                       >
                         <View>
                           <Text
@@ -713,6 +715,9 @@ function DashboardHeader() {
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
+                 {storePayment ? (
+                    <EditPayment />
+                  ) : (
                   <View style={[ProfileStyles.storeCard]}>
                     <Text
                       style={{
@@ -724,13 +729,13 @@ function DashboardHeader() {
                     >
                       Payment
                     </Text>
-
-                    <TouchableOpacity style={[ProfileStyles.paymentBtn]}>
+                    <TouchableOpacity 
+                     onPress={() => setstorePayment(true)}
+                    style={[ProfileStyles.paymentBtn]}>
                       <Text style={{ textAlign: "center", fontWeight: "bold" }}>
                         Payment Details
                       </Text>
                     </TouchableOpacity>
-
                     <View
                       style={{
                         marginTop: 20,
@@ -859,6 +864,7 @@ function DashboardHeader() {
                       </View>
                     </View>
                   </View>
+                  )}
                 </View>
 
                 <View
@@ -1451,6 +1457,9 @@ function DashboardHeader() {
                       : ProfileStyles.InActiveContent,
                   ]}
                 >
+                    {storePayment ? (
+                    <EditPayment />
+                  ) : (
                   <View style={[ProfileStyles.storeCard]}>
                     <Text
                       style={{
@@ -1462,7 +1471,9 @@ function DashboardHeader() {
                     >
                       Payment
                     </Text>
-                    <TouchableOpacity style={[ProfileStyles.paymentBtn]}>
+                    <TouchableOpacity 
+                     onPress={() => setstorePayment(true)}
+                    style={[ProfileStyles.paymentBtn]}>
                       <Text style={{ textAlign: "center", fontWeight: "bold" }}>
                         Payment Details
                       </Text>
@@ -1595,6 +1606,7 @@ function DashboardHeader() {
                       </View>
                     </View>
                   </View>
+                  )}
                 </View>
 
                 <View

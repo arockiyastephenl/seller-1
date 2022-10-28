@@ -775,6 +775,7 @@ const K_OPTIONS = [
                               </Text>
                             </Text>
                           </View>
+                          
                           {/* <View style={{ flex: 1, alignItems: "center" }}>
                             <TouchableOpacity style={ProfileStyles.uploadbtn}>
                               <Text>
@@ -783,6 +784,23 @@ const K_OPTIONS = [
                             </TouchableOpacity>
                           </View> */}
                         </View>
+                        <View
+                  style={[
+                    ProfileStyles.headContainer,
+                    { flex: 1, justifyContent: "center", flexDirection: "row",marginBottom:20 },
+                  ]}
+                >
+                  <TouchableOpacity style={[ProfileStyles.discardBtn]}>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>
+                      Discard
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[ProfileStyles.discardBtn]}>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>
+                      Save
+                    </Text>
+                  </TouchableOpacity>
+                </View>
                       </View>
                     </ScrollView>
                   </SafeAreaView>
@@ -1242,6 +1260,23 @@ const K_OPTIONS = [
                               </Text>
                             </View>
                           </View>
+                          <View
+                  style={[
+                    ProfileStyles.headContainer,
+                    { flex: 1, justifyContent: "center", flexDirection: "row",marginTop:15,marginBottom:20 },
+                  ]}
+                >
+                  <TouchableOpacity style={[ProfileStyles.discardBtn]}>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>
+                      Discard
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[ProfileStyles.discardBtn]}>
+                    <Text style={{ color: "white", fontWeight: "bold" }}>
+                      Save
+                    </Text>
+                  </TouchableOpacity>
+                </View>
                           {/* <View style={{ flex: 1, alignItems: "center" }}>
                             <TouchableOpacity style={ProfileStyles.uploadbtn}>
                                 <Text>
@@ -1250,6 +1285,7 @@ const K_OPTIONS = [
                             </TouchableOpacity>
                           </View> */}
                         </View>
+                     
                       </View>
                     </ScrollView>
                   </SafeAreaView>
